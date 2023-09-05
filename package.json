@@ -1,0 +1,58 @@
+{
+  "name": "react-native-photo-cropper",
+  "title": "React Native Photo Cropper, inspired by Instagram",
+  "version": "1.0.0",
+  "description": "The photo cropper component, similar to Instagram's.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thanhcuong1990/react-native-photo-cropper"
+  },
+  "keywords": [
+    "react-native",
+    "react",
+    "native",
+    "image",
+    "picker",
+    "cropper",
+    "crop",
+    "instagram"
+  ],
+  "author": {
+    "name": "Cuong Lam",
+    "email": "thanhcuong1990@gmail.com"
+  },
+  "license": "MIT",
+  "licenseFilename": "LICENSE",
+  "readmeFilename": "README.md",
+  "peerDependencies": {
+    "react": ">=18.2.0",
+    "react-native": ">=0.72.4",
+    "react-native-gesture-handler": ">=2.12.1",
+    "react-native-reanimated": "^3.4.2",
+    "@react-native-community/image-editor": "github:thanhcuong1990/react-native-image-editor#master"
+  },
+  "devDependencies": {
+    "@react-native-community/image-editor": "github:thanhcuong1990/react-native-image-editor#master",
+    "@types/react-native": "^0.72.2",
+    "@typescript-eslint/eslint-plugin": "^5.7.0",
+    "@typescript-eslint/parser": "^5.7.0",
+    "eslint": "^8.48.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "^3.0.3",
+    "react": ">=18.2.0",
+    "react-native": ">=0.72.4",
+    "react-native-gesture-handler": "2.12.1",
+    "react-native-reanimated": "^3.4.2",
+    "typescript": "^5.2.2"
+  }
+}
