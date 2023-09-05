@@ -377,7 +377,7 @@ PODS:
     - glog
   - react-native-cameraroll (5.8.0):
     - React-Core
-  - react-native-image-editor (2.3.0):
+  - react-native-image-editor-next (1.1.0):
     - React-Core
     - React-RCTImage
   - React-NativeModulesApple (0.72.4):
@@ -573,7 +573,7 @@ DEPENDENCIES:
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - "react-native-cameraroll (from `../node_modules/@react-native-camera-roll/camera-roll`)"
-  - "react-native-image-editor (from `../node_modules/@react-native-community/image-editor`)"
+  - react-native-image-editor-next (from `../node_modules/react-native-image-editor-next`)
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
@@ -658,8 +658,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/logger"
   react-native-cameraroll:
     :path: "../node_modules/@react-native-camera-roll/camera-roll"
-  react-native-image-editor:
-    :path: "../node_modules/@react-native-community/image-editor"
+  react-native-image-editor-next:
+    :path: "../node_modules/react-native-image-editor-next"
   React-NativeModulesApple:
     :path: "../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios"
   React-perflogger:
@@ -736,7 +736,7 @@ SPEC CHECKSUMS:
   React-jsinspector: aaed4cf551c4a1c98092436518c2d267b13a673f
   React-logger: da1ebe05ae06eb6db4b162202faeafac4b435e77
   react-native-cameraroll: 8cc80e0922a6a432938a26f3b50714adcb2adb5f
-  react-native-image-editor: a6ba2fc1d85013cebfc496c5480f8c1f24ebdf06
+  react-native-image-editor-next: 4b05255fb1beafa0c02461016d3122b7d54e13ee
   React-NativeModulesApple: edb5ace14f73f4969df6e7b1f3e41bef0012740f
   React-perflogger: 496a1a3dc6737f964107cb3ddae7f9e265ddda58
   React-RCTActionSheet: 02904b932b50e680f4e26e7a686b33ebf7ef3c00

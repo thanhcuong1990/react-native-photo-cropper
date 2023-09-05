@@ -14,7 +14,7 @@ import Animated, {
   withSpring,
   withTiming,
 } from 'react-native-reanimated';
-import ImageEditor from '@react-native-community/image-editor';
+import ImageEditor from 'react-native-image-editor-next';
 
 export interface CroppedData {
   croppedUri: string;

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { StyleSheet, View, Dimensions, Image } from 'react-native';
 import { PanGestureHandler, PinchGestureHandler, } from 'react-native-gesture-handler';
 import Animated, { runOnJS, useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, withSpring, withTiming, } from 'react-native-reanimated';
-import ImageEditor from '@react-native-community/image-editor';
+import ImageEditor from 'react-native-image-editor-next';
 const PhotoCropper = (props) => {
     const { image, height = 1, onCropped, width = 1, grid, gridColor, gridHorizontalNum, gridVerticalNum, maxScale, } = props;
     const imageRatio = image.height / image.width;
