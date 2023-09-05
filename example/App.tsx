@@ -43,7 +43,7 @@ const App = () => {
   }
 
   return (
-    <GestureHandlerRootView style={{flex: 1}}>
+    <GestureHandlerRootView style={styles.root}>
       <View style={styles.container}>
         <PhotoCropper
           onCropped={data => setCroppedImage(data.croppedUri)}
@@ -67,6 +67,9 @@ const App = () => {
 export default App;
 
 const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+  },
   container: {
     paddingTop: 100,
     flex: 1,
