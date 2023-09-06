@@ -107,7 +107,11 @@ const PhotoCropper = (props) => {
                 y: offsetY,
             },
         });
-        onCropped && onCropped({ originalUri: image.uri, croppedUri: url });
+        onCropped && onCropped({
+            originalUri: image.uri,
+            croppedUri: url,
+            croppedArea: { width: x2, height: y2, x: offsetX, y: offsetY }
+        });
     };
     const panGestureHandler = useAnimatedGestureHandler({
         onStart: (_, ctx) => {
