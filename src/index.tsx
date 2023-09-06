@@ -19,6 +19,12 @@ import ImageEditor from 'react-native-image-editor-next';
 export interface CroppedData {
   croppedUri: string;
   originalUri: string;
+  croppedArea: {
+    width: number;
+    height: number;
+    x: number;
+    y: number;
+  }
 }
 
 export interface PhotoCropperProps {
@@ -173,7 +179,11 @@ const PhotoCropper: React.FC<PhotoCropperProps> = (
         y: offsetY,
       },
     });
-    onCropped && onCropped({originalUri: image.uri, croppedUri: url});
+    onCropped && onCropped({
+      originalUri: image.uri,
+      croppedUri: url,
+      croppedArea: { width: x2, height: y2, x: offsetX, y: offsetY }
+    });
   };
 
   const panGestureHandler = useAnimatedGestureHandler<

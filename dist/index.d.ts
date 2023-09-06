@@ -2,6 +2,12 @@ import React from 'react';
 export interface CroppedData {
     croppedUri: string;
     originalUri: string;
+    croppedArea: {
+        width: number;
+        height: number;
+        x: number;
+        y: number;
+    };
 }
 export interface PhotoCropperProps {
     image: {
