@@ -6,9 +6,9 @@ React Native Image Cropper, inspired by Instagram
 
 ## Getting started
 ### First, install peer packages
-- [react-native-gesture-handler@^1.10.0](https://docs.swmansion.com/react-native-gesture-handler/docs/1.10.3/)
-- [react-native-reanimated@2.2.4](https://docs.swmansion.com/react-native-reanimated/docs/2.2.0/)
-- [react-native-image-editor@^2.3.0](https://github.com/callstack/react-native-image-editor)
+- [react-native-gesture-handler@^2.12.1](https://docs.swmansion.com/react-native-gesture-handler/docs/)
+- [react-native-reanimated@^3.4.2](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/getting-started/)
+- [react-native-image-editor-next@^1.1.0](https://github.com/thanhcuong1990/react-native-image-editor)
 ### Second, install package
 `npm install react-native-photo-cropper --save`
 or
@@ -66,5 +66,11 @@ export interface PhotoCropperProps {
 export interface CroppedData {
   croppedUri: string;
   originalUri: string;
+  croppedArea: {
+    width: number;
+    height: number;
+    x: number;
+    y: number;
+  }
 }
 ```
