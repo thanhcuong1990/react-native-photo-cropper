@@ -6,6 +6,7 @@ import {
   Platform,
   StyleSheet,
   View,
+  Dimensions,
 } from 'react-native';
 import PhotoCropper from 'react-native-photo-cropper';
 import {CameraRoll} from '@react-native-camera-roll/camera-roll';
@@ -16,7 +17,15 @@ async function hasAndroidPermission() {
   if (Platform.OS !== 'android') {
     return;
   }
-  const permission = PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE;
+  const platformVersion =
+    typeof Platform.Version === 'string'
+      ? parseInt(Platform.Version, 10)
+      : Platform.Version;
+
+  const permission =
+    platformVersion >= 33
+      ? PermissionsAndroid.PERMISSIONS.READ_MEDIA_IMAGES
+      : PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE;
 
   const hasPermission = await PermissionsAndroid.check(permission);
   if (hasPermission) {
@@ -35,7 +44,7 @@ const App = () => {
 
   useEffect(() => {
     hasAndroidPermission();
-    CameraRoll.getPhotos({first: 2}).then(v => setOriginImage(v.edges[1]));
+    CameraRoll.getPhotos({first: 20}).then(v => setOriginImage(v.edges[12]));
   }, []);
 
   if (!orginImage) {
@@ -45,10 +54,15 @@ const App = () => {
   return (
     <GestureHandlerRootView style={styles.root}>
       <View style={styles.container}>
-        <PhotoCropper
-          onCropped={data => setCroppedImage(data.croppedUri)}
-          image={orginImage.node.image}
-        />
+        <View style={styles.crop}>
+          <PhotoCropper
+            onCropped={data => setCroppedImage(data.croppedUri)}
+            image={orginImage.node.image}
+            width={DeviceSize.width * 3/4}
+            height={DeviceSize.width * 1}
+          />
+        </View>
+
         <Button
           title="Crop"
           onPress={() => {
@@ -57,7 +71,11 @@ const App = () => {
           }}
         />
         {visible && visibleImage && (
-          <Image source={{uri: visibleImage}} style={styles.image} />
+          <Image
+            source={{uri: visibleImage}}
+            style={styles.image}
+            resizeMode="contain"
+          />
         )}
       </View>
     </GestureHandlerRootView>
@@ -65,6 +83,20 @@ const App = () => {
 };
 
 export default App;
+
+const DeviceSize = {
+  width: Dimensions.get('window').width,
+  height: Dimensions.get('window').height,
+};
+
+// const SQUARE_RATIO = '1:1';
+// const VERTICAL_RECT_RATIO = '3:4';
+// const HORIZONTAL_RECT_RATIO = '4:3';
+// const AR_LIST = [
+//   {key: SQUARE_RATIO, value: 1 / 1},
+//   {key: HORIZONTAL_RECT_RATIO, value: 4 / 3},
+//   {key: VERTICAL_RECT_RATIO, value: 3 / 4},
+// ];
 
 const styles = StyleSheet.create({
   root: {
@@ -74,8 +106,16 @@ const styles = StyleSheet.create({
     paddingTop: 100,
     flex: 1,
   },
+  crop: {
+    width: DeviceSize.width,
+    height: DeviceSize.width,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#000',
+  },
   image: {
-    width: 200,
-    height: 200,
+    width: 250,
+    height: 250,
+    backgroundColor: '#000',
   },
 });
