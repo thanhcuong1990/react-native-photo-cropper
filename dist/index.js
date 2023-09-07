@@ -4,7 +4,7 @@ import { PanGestureHandler, PinchGestureHandler, } from 'react-native-gesture-ha
 import Animated, { runOnJS, useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, withSpring, withTiming, } from 'react-native-reanimated';
 import ImageEditor from 'react-native-image-editor-next';
 const PhotoCropper = (props) => {
-    const { image, height = 1, onCropped, width = 1, grid, gridColor, gridHorizontalNum, gridVerticalNum, maxScale, } = props;
+    const { image, height = 1, onCropped, width = 1, grid, gridColor, gridHorizontalNum, gridVerticalNum, maxScale, ...imageProps } = props;
     const imageRatio = image.height / image.width;
     const viewRatio = height / width;
     const imageWidth = imageRatio > viewRatio ? width : height / imageRatio;
@@ -160,7 +160,7 @@ const PhotoCropper = (props) => {
                     React.createElement(PanGestureHandler, { maxPointers: 1, onGestureEvent: panGestureHandler },
                         React.createElement(Animated.View, { style: [{ width, height }] },
                             React.createElement(Animated.View, { style: [{ width: imageWidth, height: imageHeight }, panStyle] },
-                                React.createElement(Image, { style: { width: imageWidth, height: imageHeight }, source: image }))))))),
+                                React.createElement(Image, { style: { width: imageWidth, height: imageHeight }, source: image, ...imageProps }))))))),
         grid && (React.createElement(React.Fragment, null,
             !!(height && gridVerticalNum) &&
                 Array(gridVerticalNum)

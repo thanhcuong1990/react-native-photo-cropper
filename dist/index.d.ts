@@ -10,7 +10,7 @@ export interface CroppedData {
         y: number;
     };
 }
-export type PhotoCropperProps = ImageProps & {
+export type PhotoCropperProps = Omit<ImageProps, 'source'> & {
     image: {
         uri: string;
         width: number;
