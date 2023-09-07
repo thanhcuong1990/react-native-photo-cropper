@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {StyleSheet, View, Dimensions, Image, ImageProps} from 'react-native';
+import {StyleSheet, View, Dimensions, Image} from 'react-native';
 import {
   PanGestureHandler,
   PanGestureHandlerGestureEvent,
@@ -27,7 +27,7 @@ export interface CroppedData {
   }
 }
 
-export type PhotoCropperProps = Omit<ImageProps, 'source'> & {
+export interface PhotoCropperProps {
   image: {
     uri: string;
     width: number;
@@ -41,7 +41,7 @@ export type PhotoCropperProps = Omit<ImageProps, 'source'> & {
   gridColor?: string;
   onCropped?: (data: CroppedData) => void;
   maxScale?: number;
-};
+}
 
 const PhotoCropper: React.FC<PhotoCropperProps> = (
   props,
@@ -56,7 +56,6 @@ const PhotoCropper: React.FC<PhotoCropperProps> = (
     gridHorizontalNum,
     gridVerticalNum,
     maxScale,
-    ...imageProps
   } = props;
 
   const imageRatio = image.height / image.width;
@@ -251,7 +250,6 @@ const PhotoCropper: React.FC<PhotoCropperProps> = (
                   <Image
                     style={{width: imageWidth, height: imageHeight}}
                     source={image}
-                    {...imageProps}
                   />
                 </Animated.View>
               </Animated.View>
