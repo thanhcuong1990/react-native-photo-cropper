@@ -27,7 +27,7 @@ export interface CroppedData {
   }
 }
 
-export type PhotoCropperProps = ImageProps & {
+export type PhotoCropperProps = Omit<ImageProps, 'source'> & {
   image: {
     uri: string;
     width: number;
@@ -56,6 +56,7 @@ const PhotoCropper: React.FC<PhotoCropperProps> = (
     gridHorizontalNum,
     gridVerticalNum,
     maxScale,
+    ...imageProps
   } = props;
 
   const imageRatio = image.height / image.width;
@@ -250,6 +251,7 @@ const PhotoCropper: React.FC<PhotoCropperProps> = (
                   <Image
                     style={{width: imageWidth, height: imageHeight}}
                     source={image}
+                    {...imageProps}
                   />
                 </Animated.View>
               </Animated.View>
