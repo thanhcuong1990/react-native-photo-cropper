@@ -1,5 +1,4 @@
 import React from 'react';
-import { ImageProps } from 'react-native';
 export interface CroppedData {
     croppedUri: string;
     originalUri: string;
@@ -10,7 +9,7 @@ export interface CroppedData {
         y: number;
     };
 }
-export type PhotoCropperProps = Omit<ImageProps, 'source'> & {
+export interface PhotoCropperProps {
     image: {
         uri: string;
         width: number;
@@ -24,6 +23,6 @@ export type PhotoCropperProps = Omit<ImageProps, 'source'> & {
     gridColor?: string;
     onCropped?: (data: CroppedData) => void;
     maxScale?: number;
-};
+}
 declare const PhotoCropper: React.FC<PhotoCropperProps>;
 export default PhotoCropper;
