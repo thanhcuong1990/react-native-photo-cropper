@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "android": "npx react-native run-android",
-    "ios": "npx react-native run-ios --simulator='iPhone 14'",
+    "ios": "npx react-native run-ios --simulator='iPhone 15'",
     "start": "watchman watch-del-all && npx react-native start --reset-cache",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",

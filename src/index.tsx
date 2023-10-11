@@ -93,7 +93,7 @@ const PhotoCropper: React.FC<PhotoCropperProps> = (
     }, 200);
 
     onEnd();
-  }, [image]);
+  }, [image, width, height]);
 
   const onEnd = async () => {
     if (!width) {
