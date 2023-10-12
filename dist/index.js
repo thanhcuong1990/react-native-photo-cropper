@@ -30,7 +30,7 @@ const PhotoCropper = (props) => {
             translation.opacity.value = withTiming(1, { duration: 250 });
         }, 200);
         onEnd();
-    }, [image]);
+    }, [image, width, height]);
     const onEnd = async () => {
         if (!width) {
             return;
