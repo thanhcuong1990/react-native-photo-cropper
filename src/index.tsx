@@ -24,6 +24,7 @@ export interface CroppedData {
     height: number;
     x: number;
     y: number;
+    scale: number;
   }
 }
 
@@ -182,7 +183,7 @@ const PhotoCropper: React.FC<PhotoCropperProps> = (
     onCropped && onCropped({
       originalUri: image.uri,
       croppedUri: url,
-      croppedArea: { width: x2, height: y2, x: offsetX, y: offsetY }
+      croppedArea: { width: x2, height: y2, x: offsetX, y: offsetY, scale: clampedScale }
     });
   };
 

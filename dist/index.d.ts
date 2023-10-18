@@ -7,6 +7,7 @@ export interface CroppedData {
         height: number;
         x: number;
         y: number;
+        scale: number;
     };
 }
 export interface PhotoCropperProps {
