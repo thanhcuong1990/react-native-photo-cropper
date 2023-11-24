@@ -24,6 +24,10 @@ export interface PhotoCropperProps {
     gridColor?: string;
     onCropped?: (data: CroppedData) => void;
     maxScale?: number;
+    initialX?: number;
+    initialY?: number;
+    initialScale?: number;
+    initialOpacity?: number;
 }
 declare const PhotoCropper: React.FC<PhotoCropperProps>;
 export default PhotoCropper;

@@ -3,17 +3,16 @@ import { StyleSheet, View, Dimensions, Image } from 'react-native';
 import { PanGestureHandler, PinchGestureHandler, } from 'react-native-gesture-handler';
 import Animated, { runOnJS, useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, withSpring, withTiming, } from 'react-native-reanimated';
 import ImageEditor from 'react-native-image-editor-next';
-const PhotoCropper = (props) => {
-    const { image, height = 1, onCropped, width = 1, grid, gridColor, gridHorizontalNum, gridVerticalNum, maxScale, } = props;
+const PhotoCropper = ({ image, onCropped, grid, gridColor, gridHorizontalNum, gridVerticalNum, maxScale, width = 1, height = 1, initialX, initialY, initialOpacity = 1, initialScale = 1, }) => {
     const imageRatio = image.height / image.width;
     const viewRatio = height / width;
     const imageWidth = imageRatio > viewRatio ? width : height / imageRatio;
     const imageHeight = imageRatio > viewRatio ? width * imageRatio : height;
     const translation = {
-        x: useSharedValue(imageRatio > viewRatio ? 0 : (width - imageWidth) / 2),
-        y: useSharedValue(imageRatio > viewRatio ? (height - imageHeight) / 2 : 0),
-        scale: useSharedValue(1),
-        opacity: useSharedValue(1),
+        x: useSharedValue(initialX || imageRatio > viewRatio ? 0 : (width - imageWidth) / 2),
+        y: useSharedValue(initialY || imageRatio > viewRatio ? (height - imageHeight) / 2 : 0),
+        scale: useSharedValue(initialScale),
+        opacity: useSharedValue(initialOpacity),
     };
     useEffect(() => {
         translation.opacity.value = 0;

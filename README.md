@@ -61,6 +61,10 @@ export interface PhotoCropperProps {
   gridColor?: string; // default '#fff'
   onCropped?: (data: CroppedData) => void;
   maxScale?: number;  // default 2 / range 1 ~ ∞
+  initialX?: number;
+  initialY?: number;
+  initialScale?: number; // default 1
+  initialOpacity?: number; // default 1
 }
 
 export interface CroppedData {
