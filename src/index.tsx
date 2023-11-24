@@ -42,22 +42,29 @@ export interface PhotoCropperProps {
   gridColor?: string;
   onCropped?: (data: CroppedData) => void;
   maxScale?: number;
+  initialX?: number
+  initialY?: number
+  initialScale?: number
+  initialOpacity?: number
 }
 
 const PhotoCropper: React.FC<PhotoCropperProps> = (
-  props,
-) => {
-  const {
+  {
     image,
-    height = 1,
     onCropped,
-    width = 1,
     grid,
     gridColor,
     gridHorizontalNum,
     gridVerticalNum,
     maxScale,
-  } = props;
+    width = 1,
+    height = 1,
+    initialX,
+    initialY,
+    initialOpacity = 1,
+    initialScale = 1,
+  },
+) => {
 
   const imageRatio = image.height / image.width;
   const viewRatio = height / width;
@@ -65,11 +72,12 @@ const PhotoCropper: React.FC<PhotoCropperProps> = (
   const imageHeight = imageRatio > viewRatio ? width * imageRatio : height;
 
   const translation = {
-    x: useSharedValue(imageRatio > viewRatio ? 0 : (width - imageWidth) / 2),
-    y: useSharedValue(imageRatio > viewRatio ? (height - imageHeight) / 2 : 0),
-    scale: useSharedValue(1),
-    opacity: useSharedValue(1),
+    x: useSharedValue(initialX || imageRatio > viewRatio ? 0 : (width - imageWidth) / 2),
+    y: useSharedValue(initialY || imageRatio > viewRatio ? (height - imageHeight) / 2 : 0),
+    scale: useSharedValue(initialScale),
+    opacity: useSharedValue(initialOpacity),
   };
+
   type AnimatedGHContext = {
     startX: number;
     startY: number;
@@ -89,6 +97,7 @@ const PhotoCropper: React.FC<PhotoCropperProps> = (
     translation.y.value =
       _imageRatio > _viewRatio ? (height - _imageHeight) / 2 : 0;
     translation.scale.value = 1;
+    
     setTimeout(() => {
       translation.opacity.value = withTiming(1, {duration: 250});
     }, 200);
